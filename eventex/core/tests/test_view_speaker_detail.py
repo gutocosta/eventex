@@ -2,7 +2,12 @@ from django.test import TestCase
 
 
 class SpeakerDetailGet(TestCase):
+	def setUp(self):
+		self.resp = self.client.get('/palestrantes/grace-hopper/')
+
 	def test_get(self):
 		"""GET should return status code 200."""
-		response = self.client.get('/palestrantes/grace-hopper/')
-		self.assertEqual(200, response.status_code)
+		self.assertEqual(200, self.resp.status_code)
+
+	def test_template(self):
+		self.assertTemplateUsed(self.resp, 'core/speaker_detail.html')
