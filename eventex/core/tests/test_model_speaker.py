@@ -13,3 +13,7 @@ class SpeakerModelTest(TestCase):
 		)
 
 		self.assertTrue(Speaker.objects.exists())
+
+	def test_description_can_be_blank(self):
+		field = Speaker._meta.get_field('description')
+		self.assertTrue(field.blank)
