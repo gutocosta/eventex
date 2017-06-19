@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from eventex.core.models import Speaker
 
 
 def home(request):
@@ -10,4 +11,4 @@ def home(request):
 
 
 def speaker_detail(request, slug):
-	return render(request, 'core/speaker_detail.html')
+	return render(request, 'core/speaker_detail.html', {'speaker': Speaker()})
